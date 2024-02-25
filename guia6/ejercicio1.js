@@ -10,6 +10,9 @@
 
 let grupo = 0;
 let porcentajeImpares = 0;
+let mayorMenor = 0;
+let validacion = false;
+let gruposOrden = 0;
 
 for(let i = 0; i < 2; i++) {
     let n = parseInt(prompt("Ingresar numero"));
@@ -19,10 +22,18 @@ for(let i = 0; i < 2; i++) {
     let primos = 0;
     let ultimoPrimo = 0;
     let indexPrimo = 0;
+    let orden = Infinity;
 
     while(n !== 0) {
         longitudGrupo++;
         primos = 0;
+
+        if(n < orden) {
+            orden = n;
+            validacion = true;
+        } else {
+            validacion = false;
+        }
 
         if(n % 2 !== 0){
             impares++;
@@ -39,7 +50,12 @@ for(let i = 0; i < 2; i++) {
             indexPrimo = longitudGrupo;
         }
 
+        console.log(orden);
         n = parseInt(prompt("Ingresar numero"));
+    }
+
+    if(validacion) {
+        gruposOrden++;
     }
 
     porcentaje = (impares * 100) / longitudGrupo;
@@ -55,3 +71,4 @@ for(let i = 0; i < 2; i++) {
 
 console.log(`El grupo con mayor porcentaje de impares es ${grupo}`);
 console.log(`Porcentaje de impares: ${Math.floor(porcentajeImpares)}%`);
+console.log(`La cantidad de grupos ordenados de menor a mayor es : ${gruposOrden}`);

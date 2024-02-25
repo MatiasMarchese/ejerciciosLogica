@@ -13,27 +13,45 @@ let porcentajeImpares = 0;
 
 for(let i = 0; i < 2; i++) {
     let n = parseInt(prompt("Ingresar numero"));
-    let totalGrupo = 0;
+    let longitudGrupo = 0;
     let impares = 0;
     let porcentaje;
+    let primos = 0;
+    let ultimoPrimo = 0;
+    let indexPrimo = 0;
 
     while(n !== 0) {
-        totalGrupo++;
+        longitudGrupo++;
+        primos = 0;
 
         if(n % 2 !== 0){
             impares++;
         }
 
+        for(let j = 1; j <= n; j++) {
+            if(n % j === 0) {
+                primos++;
+            }
+        }
+
+        if(primos === 2) {
+            ultimoPrimo = n;
+            indexPrimo = longitudGrupo;
+        }
+
         n = parseInt(prompt("Ingresar numero"));
     }
 
-    porcentaje = (impares * 100) / totalGrupo;
+    porcentaje = (impares * 100) / longitudGrupo;
 
     if(porcentaje > porcentajeImpares) {
         porcentajeImpares = porcentaje;
         grupo = i + 1;
     }
+
+    console.log(`GRUPO: ${grupo}`);
+    console.log(`ULTIMO PRIMO: ${ultimoPrimo}`);
 }
 
-console.log(`El grupo con mayo porcentaje de impares es ${grupo}`);
-console.log(`Porcentaje de impares: ${porcentajeImpares}%`);
+console.log(`El grupo con mayor porcentaje de impares es ${grupo}`);
+console.log(`Porcentaje de impares: ${Math.floor(porcentajeImpares)}%`);

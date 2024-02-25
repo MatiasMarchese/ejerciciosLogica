@@ -11,7 +11,7 @@
 let grupo = 0;
 let porcentajeImpares = 0;
 
-for(let i = 0; i < 5; i++) {
+for(let i = 0; i < 2; i++) {
     let n = parseInt(prompt("Ingresar numero"));
     let totalGrupo = 0;
     let impares = 0;
@@ -31,6 +31,9 @@ for(let i = 0; i < 5; i++) {
 
     if(porcentaje > porcentajeImpares) {
         porcentajeImpares = porcentaje;
-        grupo = i;
+        grupo = i + 1;
     }
 }
+
+console.log(`El grupo con mayo porcentaje de impares es ${grupo}`);
+console.log(`Porcentaje de impares: ${porcentajeImpares}%`);
